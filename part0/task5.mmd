@@ -1,0 +1,7 @@
+sequenceDiagram
+    User->>+Browser:Type text into input field
+    // 1. onsubmit function create new note, push it and clean value of input field. After that call redrawNotes function wich recreate list of notes 
+    User->>+Browser:Press submit button
+    Browser->>+Server: Send POST request to https://studies.cs.helsinki.fi/exampleapp/new_note_spa 
+    Server-->>-Browser: responds with HTTP status code 201 Created
+
