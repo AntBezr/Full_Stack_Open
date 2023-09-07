@@ -1,7 +1,9 @@
 sequenceDiagram
-    User->>+Browser:Type text into input field
-    User->>+Browser:Press submit button
-    Note over Brwser, Server: Onsubmit function create new note, push it and clean value of input field.<br/> After that call redrawNotes function wich recreate list of notes 
-    Browser->>+Server: Send POST request to https://studies.cs.helsinki.fi/exampleapp/new_note_spa 
-    Server-->>-Browser: responds with HTTP status code 201 Created
-
+    Browser->>+Server: Send GET request to https://studies.cs.helsinki.fi/exampleapp/spa
+    Server-->>-Browser: Responds with spa.html
+    Browser->>+Server: Send GET request to server for main.css
+    Browser->>+Server: Send GET request to server for spa.js
+    Browser->>+Server: Send GET request to server for data.json
+     Server-->>-Browser: Responds with main.css
+     Server-->>-Browser: Responds with spa.js
+     Server-->>-Browser: Responds with data.json
