@@ -1,0 +1,13 @@
+sequenceDiagram
+    User->>+Browser:Type text into input field
+    User->>+Browser:Press submit button
+    Browser->>+Server: Send POST request to https://studies.cs.helsinki.fi/exampleapp/new_note
+    Server-->>-Browser: responds with HTTP status code 302
+    Browser->>+Server: Send GET request to https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>-Browser: Responds with notes.html
+    Browser->>+Server: Send GET request to server for main.css
+    Browser->>+Server: Send GET request to server for main.js
+    Browser->>+Server: Send GET request to server for data.json
+     Server-->>-Browser: Responds with main.css
+     Server-->>-Browser: Responds with maiin.js
+     Server-->>-Browser: Responds with data.json
