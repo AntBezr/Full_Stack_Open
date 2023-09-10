@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0rem;
+  text-align: center;
+}
+
+.anecdotes {
+  display: flex;
+  flex-direction: column;
+}
+
+.anecOfDay {
+  margin: 25px;
+}
