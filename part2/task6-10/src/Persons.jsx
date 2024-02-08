@@ -1,14 +1,6 @@
 import React from 'react';
-import personService from './services/persons';
 
-function Persons({ persons }) {
-
-  const deleteHandler = (id) => {
-    confirm("Are you sure you want to delete this person?") ?
-      personService.deletePerson(id) : null;
-    window.location.reload();
-  }
-
+function Persons({ persons, deleteHandler }) {
   return (
     <div>
       <ul>

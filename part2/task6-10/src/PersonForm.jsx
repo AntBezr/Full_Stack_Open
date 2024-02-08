@@ -1,17 +1,13 @@
 import React from 'react';
+
 import { useState } from 'react';
 
-function PersonForm({ saveContact, persons }) {
+function PersonForm({ createNewPerson }) {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  const handleNameChange = (event) => {
-    setNewName(event.target.value);
-  }
-
-  const handleNumberChange = (event) => {
-
-    setNewNumber(event.target.value);
+  const handleChange = (event) => {
+    event.target.id === 'name' ? setNewName(event.target.value) : setNewNumber(event.target.value);
   }
 
   const handleSaveContact = (event) => {
@@ -19,12 +15,15 @@ function PersonForm({ saveContact, persons }) {
     const newPerson = {
       name: newName,
       number: newNumber,
-      id: (newName + newNumber)
+      id: (newName.toLowerCase() + '-' + newNumber)
     }
-    persons.includes(newPerson.name) ? alert(`${newPerson.name} is already added to phonebook`) : saveContact(newPerson)
+    if (newPerson.name === '' || newPerson.number === '') {
+      alert('Name or number cannot be empty');
+      return;
+    }
+    createNewPerson(newPerson);
     setNewName('')
     setNewNumber('')
-    saveContact(newPerson);
   }
 
   return (
@@ -33,12 +32,14 @@ function PersonForm({ saveContact, persons }) {
         <div>
           <h2>Add new</h2>
           name: <input
+            id='name'
             value={newName}
-            onChange={handleNameChange}
+            onChange={handleChange}
           />
           number: <input
             value={newNumber}
-            onChange={handleNumberChange}
+            id='number'
+            onChange={handleChange}
           />
         </div>
         <div>
