@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function PersonForm({ saveContact, arrayLenght }) {
+function PersonForm({ saveContact, persons }) {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
@@ -10,6 +10,7 @@ function PersonForm({ saveContact, arrayLenght }) {
   }
 
   const handleNumberChange = (event) => {
+
     setNewNumber(event.target.value);
   }
 
@@ -18,9 +19,9 @@ function PersonForm({ saveContact, arrayLenght }) {
     const newPerson = {
       name: newName,
       number: newNumber,
-      id: arrayLenght + 1
+      id: (newName + newNumber)
     }
-
+    persons.includes(newPerson.name) ? alert(`${newPerson.name} is already added to phonebook`) : saveContact(newPerson)
     setNewName('')
     setNewNumber('')
     saveContact(newPerson);
