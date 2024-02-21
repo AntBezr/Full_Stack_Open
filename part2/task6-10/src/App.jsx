@@ -41,7 +41,7 @@ const App = () => {
       })
       .catch(error => {
         setMessage({
-          message: `Something went wrong while fetching the data: ${error}`,
+          message: `Something went wrong while fetching the data: ${error.response.data.error}`,
           type: 'error'
         })
         setTimeout(() => {
